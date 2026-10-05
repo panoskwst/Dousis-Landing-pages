@@ -1,0 +1,7 @@
+---
+const { items } = Astro.props;
+---
+
+<section>
+    {items.map(([t, p]) => <div><h3>{t}</h3><p>{p}</p></div>)}
+</section>

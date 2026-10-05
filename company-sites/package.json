@@ -7,7 +7,9 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build:global": "SITE_ID=gc astro build --outDir dist/gc",
+    "build:volcano": "SITE_ID=vp astro build --outDir dist/volcano",
+    "build:all": "npm run build:gc && npm run build:vp",
     "preview": "astro preview",
     "astro": "astro"
   },

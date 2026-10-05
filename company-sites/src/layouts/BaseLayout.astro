@@ -1,0 +1,31 @@
+---
+import { site } from "../site";
+const { title, description = "" } = Astro.props;
+const t = site.theme;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+---
+
+<html lang={site.lang} style={`--bg:${t.bg};--fg:${t.fg};--accent:${t.accent};--muted::${t.muted};--panel:${t.panel};--head:${t.headFont};--body:${t.bodyFont}`}>
+    <head>
+        <meta>
+        <meta>
+        <title>{title} | {site.name}</title>
+        <meta>
+        <link rel="canonical" href={canonical}>
+        <link rel="stylesheet" href={t.fontsUrl}>
+    </head>
+    <body>
+        <header>
+            <a href="/" class="logo">{site.name}</a>
+            <nav>{site.nav.map(n => <a href={n.href}>{n.label}</a>)}</nav>
+        </header>
+        <slot />
+        <footer>
+            <a href="/about">About us</a> <a href="/contact">Contact</a> <a href="/legeal-notice">Legal notice</a>
+            <span> {new Date().getFullYear()} {site.company.legalName}</span>
+        </footer>
+    </body>
+</html>
+<style is:global>
+
+</style>

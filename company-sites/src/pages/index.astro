@@ -1,17 +1,16 @@
 ---
-
+import  BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Proof from "../components/Proof.astro";
+import Benefits from "../components/Benefits.astro";
+import Cta from "../components/Cta.astro";
+import { site } from "../site";
+const h = site.home;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={site.name} description={h.sub}>
+	<Hero title={h.h1} sub={h.sub} cta={site.cta} />
+	<Proof items={h.proof} />
+	<Benefits items={h.benefits} />
+	<Cta title={h.closing} label={site.cta} href="/contact" />
+</BaseLayout>
