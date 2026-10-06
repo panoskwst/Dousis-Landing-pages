@@ -2,7 +2,7 @@ import globalComunication from "../sites/global-comunication";
 
 const all = {globalComunication};
 const id = process.env.SITE_ID as keyof typeof all;
-if (!all[id]) throw new Error(`Set SITE_ID to one ofe: ${Object.keys(all).join(",")}`);
+if (!all[id]) throw new Error(`Set SITE_ID to one of: ${Object.keys(all).join(",")}`);
 
 export const site = all[id];
 export const legal = Object.values(

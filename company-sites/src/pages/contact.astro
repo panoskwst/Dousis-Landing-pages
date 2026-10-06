@@ -5,3 +5,15 @@
     <button class="btn">Αποστολή</button>
     <p id="cf-status" role="status"></p>
 </form>
+<script>
+    const f = document.getElementById("cf") as HTMLFormElement;
+    const s = document.getElementById("cf-status")!;
+    f.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        s.textContent = "Αποστολή...";
+        const r = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(Object.fromEntries(new FormData(f))) });
+        s.textContent = r.ok ? "Το μυνημά σου στάλθηκε. Θα εποικινωνήσουμε σύνταμα μαζί σου!" : "Το μύνημα σου δεν μπόρεσε να σταλθεί. Παρακαλώ στείλε μας mail.";
+        if (r.ok) f.reset();
+    });
+</script>
